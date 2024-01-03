@@ -1,0 +1,5 @@
+/Code/nbproject
+*.xml
+*.mf
+/Code/nbproject/private/
+/Code/build/
