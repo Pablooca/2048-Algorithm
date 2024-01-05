@@ -68,6 +68,7 @@ public class Tablero {
 
             int fila = random.nextInt(4);
             int columna = random.nextInt(4);
+
             int valor = (random.nextInt(2) + 1) * 2;
 
             if (matrix[fila][columna] == 0) {

@@ -8,6 +8,9 @@ import java.util.List;
  * @author Pablo Oca Galeano
  *
  * @version 03/01/2024
+ * 
+ * - Creación de los objetos iniciales.
+ * - Creación del bucle principal
  */
 public class Main {
 
@@ -72,43 +75,30 @@ public class Main {
         while (maximo != 2048 && tamLista != 17) {
             tablero.mostrarMatriz();
             
-            System.out.println("tamLista = " + tamLista);
-            
             movimiento = tablero.moverIzquierda(posicionesOcupadas);
             mostrarMovimiento(0, movimiento);
-            if (movimiento){
-                System.out.println("tamLista = " + tamLista);
-            }
-
+            
             /*posicion = tablero.colocarNumeroAleatorio(NUM_INTENTOS, tamLista);
             posicionesOcupadas.add(posicion);
             tamLista = posicionesOcupadas.size();*/
 
             movimiento = tablero.moverDerecha(posicionesOcupadas);
             mostrarMovimiento(1, movimiento);
-            if (movimiento){
-                System.out.println("tamLista = " + tamLista);
-            }
-            
+
             /*posicion = tablero.colocarNumeroAleatorio(NUM_INTENTOS, tamLista);
             posicionesOcupadas.add(posicion);
             tamLista = posicionesOcupadas.size();*/
 
             movimiento = tablero.moverArriba(posicionesOcupadas);
             mostrarMovimiento(2, movimiento);
-            if (movimiento){
-                System.out.println("tamLista = " + tamLista);
-            }
-            
+
             /*posicion = tablero.colocarNumeroAleatorio(NUM_INTENTOS, tamLista);
             posicionesOcupadas.add(posicion);
             tamLista = posicionesOcupadas.size();*/
 
             movimiento = tablero.moverAbajo(posicionesOcupadas);
             mostrarMovimiento(3, movimiento);
-            if (movimiento){
-                System.out.println("tamLista = " + tamLista);
-            }
+
             
             posicion = tablero.colocarNumeroAleatorio(NUM_INTENTOS, tamLista);
             posicionesOcupadas.add(posicion);
