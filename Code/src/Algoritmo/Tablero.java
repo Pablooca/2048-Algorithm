@@ -8,6 +8,16 @@ import java.util.Random;
  * @author Pablo Oca Galeano
  *
  * @version 03/01/2024
+ *  - Creación de los métodos para realizar los movimientos básicos (arriba, abajo, izquierda, derecha)
+ *  - Creación del método para la generación aleatoria de los números.
+ *  - Creación del método para imprimir la matriz por pantalla
+ *  - Creación del método para la obtención del máximo
+ * 
+ *  - Creation of methods to perform basic movements (up, down, left, right)
+ *  - Creation of the method for the random generation of numbers.
+ *  - Creation of the method to print the matrix on the screen.
+ *  - Creation of the method to obtain the maximum
+ * 
  */
 public class Tablero {
 
@@ -38,14 +48,20 @@ public class Tablero {
 
     /**
      * Método para la generación de los números aleatorios y su posicionamiento
-     * en el tablero. Method for the generation of the random numbers and its
+     * en el tablero. 
+     * Method for the generation of the random numbers and its
      * positioning on the board.
+     * @param intentos --> Número de veces que se ejecuta el método en el caso de que no se encuentre ninguna posición. Number of times the method is executed if no position is found.
+     * @param tamLista --> Tamaño de la lista para comprobar si se puede o no añadir un número al tablero. List size to check whether or not a number can be added to the board.
+     * @return 
+     *  - El método devuelve "null" si se ha llegado al máximo de intentos o si el tamaño de la lista es 16 (número total de casillas). En caso contrario devuelve la posición en la que se ha añadido el número.
+     *  - The method returns "null" if "intentos" is equal to 0 or the list size is 16 (total number of length). Otherwise, it returns the posicion where the number has been added.
      */
     public int[] colocarNumeroAleatorio(int intentos, int tamLista) {
         if (intentos <= 0) {
             System.out.println("No se pudo colocar un número aleatorio después de varios intentos");
             return null;
-        } else if (tamLista == 16) {
+        } else if (tamLista == 17) {
             System.out.println("El tam de la lista es 16");
             return null;
         } else {
@@ -65,8 +81,8 @@ public class Tablero {
     }
 
     /**
-     * Método para mostrar por pantalla el tablero Method to display the board
-     * on the screen
+     * Método para mostrar por pantalla el tablero 
+     * Method to display the board on the screen
      */
     public void mostrarMatriz() {
         System.out.println();
@@ -79,10 +95,13 @@ public class Tablero {
     }
 
     /**
-     * Método para mover a la izquierda un número Method to move a number to the
-     * left
+     * Método para mover a la izquierda un número 
+     * Method to move a number to the left
      *
-     * @param posicionesOcupadas
+     * @param posicionesOcupadas --> Lista de la cual se escoge la posición a mover hacia la izquierda. List from which the position to move to the left is chosen.
+     * @return 
+     *  - El método devuelve "true" si se ha podido efectuar el movimiento a la izquierda. En caso contrario, devuelve "false"
+     *  - The method return "true" if the movement to the left could be performed. Otherwise, returns "false"
      */
     public boolean moverIzquierda(List<int[]> posicionesOcupadas) {
         int index = random.nextInt(posicionesOcupadas.size());
@@ -123,6 +142,16 @@ public class Tablero {
         }
     }
 
+    
+    /**
+     * Método para mover a la derecha un número 
+     * Method to move a number to the right
+     *
+     * @param posicionesOcupadas --> Lista de la cual se escoge la posición a mover hacia la derecha. List from which the position to move to the right is chosen.
+     * @return 
+     *  - El método devuelve "true" si se ha podido efectuar el movimiento a la derecha. En caso contrario, devuelve "false"
+     *  - The method return "true" if the movement to the right could be performed. Otherwise, returns "false"
+     */
     public boolean moverDerecha(List<int[]> posicionesOcupadas) {
         int index = random.nextInt(posicionesOcupadas.size());
         int[] posicionAleatoria = posicionesOcupadas.get(index);
@@ -161,6 +190,15 @@ public class Tablero {
         }
     }
 
+    /**
+     * Método para mover hacia arriba un número 
+     * Method to move a number up
+     *
+     * @param posicionesOcupadas --> Lista de la cual se escoge la posición a mover hacia arriba. List from which the position to move up is chosen.
+     * @return 
+     *  - El método devuelve "true" si se ha podido efectuar el movimiento hacia arriba. En caso contrario, devuelve "false"
+     *  - The method return "true" if the upward movement could be carried out. Otherwise, returns "false"
+     */
     public boolean moverArriba(List<int[]> posicionesOcupadas) {
         int index = random.nextInt(posicionesOcupadas.size());
         int[] posicionAleatoria = posicionesOcupadas.get(index);
@@ -199,6 +237,15 @@ public class Tablero {
         }
     }
 
+    /**
+     * Método para mover hacia abajo un número 
+     * Method to move a number down
+     *
+     * @param posicionesOcupadas --> Lista de la cual se escoge la posición a mover hacia abajo. List from which the position to move down is chosen.
+     * @return 
+     *  - El método devuelve "true" si se ha podido efectuar el movimiento hacia arriba. En caso contrario, devuelve "false"
+     *  - The method return "true" if the downward movement could be carried out. Otherwise, returns "false"
+     */
     public boolean moverAbajo(List<int[]> posicionesOcupadas) {
         int index = random.nextInt(posicionesOcupadas.size());
         int[] posicionAleatoria = posicionesOcupadas.get(index);
@@ -237,6 +284,13 @@ public class Tablero {
         }
     }
 
+    /**
+     * Método para obtener el máximo del tablero. El máximo es importante porque determina cuántas iteraciones realiza el bucle principal en el main.
+     * Method to get the maximum of the board. The maximum is important because it determines how many iterations the main loop performs in the main.
+     * @return
+     *  - El método devuelve el máximo del tablero.
+     *  - The method return the maximum of the board.
+    */
     public int obtenerMaximo() {
         int max = 0;
         for (int i = 0; i < 4; i++) {
