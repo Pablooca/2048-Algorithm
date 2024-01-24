@@ -63,27 +63,23 @@ public class Tablero {
      * 16 (total number of length). Otherwise, it returns the posicion where the
      * number has been added.
      */
-    public int[] colocarNumeroAleatorio(int intentos, int tamLista) {
-        if (intentos <= 0) {
-            System.out.println("No se pudo colocar un número aleatorio después de varios intentos");
-            return null;
-        } else if (tamLista == 17) {
-            System.out.println("El tam de la lista es 16");
-            return null;
-        } else {
+    public int[] colocarNumeroAleatorio(int intentos, int tamLista, List<int[]> posicionesDesocupadas) {
 
-            int fila = random.nextInt(4);
-            int columna = random.nextInt(4);
+        if (posicionesDesocupadas.size() != 0) {
+            int index = random.nextInt(posicionesDesocupadas.size());
+            System.out.println(index);
+            int[] posicionAleatoria = posicionesDesocupadas.get(index);
+            int fila = posicionAleatoria[0];
+            int columna = posicionAleatoria[1];
 
             int valor = (random.nextInt(2) + 1) * 2;
 
-            if (matrix[fila][columna] == 0) {
-                matrix[fila][columna] = valor;
-                int[] posicion = {fila, columna};
-                return posicion;
-            } else {
-                return colocarNumeroAleatorio(intentos - 1, tamLista);
-            }
+            matrix[fila][columna] = valor;
+            int[] posicion = {fila, columna};
+            return posicion;
+        }
+        else {
+            return null;
         }
     }
 
